@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dron Haritwal | Data Scientist &amp; Software Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet" type="text/css"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#0070f3",
+                    "on-secondary": "#2f3037",
+                    "primary-fixed": "#d8e2ff",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#e0e2ed",
+                    "on-tertiary-container": "#ffffff",
+                    "primary-fixed-dim": "#aec6ff",
+                    "on-primary-fixed-variant": "#004397",
+                    "outline": "#8b90a0",
+                    "on-primary": "#002e6b",
+                    "on-surface-variant": "#c1c6d7",
+                    "secondary-fixed-dim": "#c6c6cf",
+                    "on-secondary-fixed-variant": "#45464e",
+                    "tertiary": "#c6c6c6",
+                    "surface-container-high": "#272a32",
+                    "surface-container-highest": "#32353d",
+                    "on-secondary-container": "#b4b4bd",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "on-surface": "#e0e2ed",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-error": "#690005",
+                    "surface-container": "#1c1f27",
+                    "inverse-on-surface": "#2d3039",
+                    "secondary-fixed": "#e2e1eb",
+                    "surface-tint": "#aec6ff",
+                    "inverse-primary": "#0059c5",
+                    "surface-container-low": "#181b23",
+                    "on-secondary-fixed": "#1a1b22",
+                    "primary": "#aec6ff",
+                    "surface-variant": "#32353d",
+                    "tertiary-fixed": "#e2e2e2",
+                    "error-container": "#93000a",
+                    "surface-bright": "#363942",
+                    "outline-variant": "#414754",
+                    "surface-dim": "#10131b",
+                    "surface": "#10131b",
+                    "secondary": "#c6c6cf",
+                    "tertiary-container": "#767676",
+                    "secondary-container": "#45464e",
+                    "background": "#10131b",
+                    "surface-container-lowest": "#0b0e15",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#303030",
+                    "inverse-surface": "#e0e2ed",
+                    "on-primary-fixed": "#001a43"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-xs": "4px",
+                    "unit": "8px",
+                    "margin-page": "64px",
+                    "stack-md": "16px",
+                    "container-max": "1280px",
+                    "stack-xl": "48px"
+            },
+            "fontFamily": {
+                    "code-snippet": ["Space Grotesk", "sans-serif"],
+                    "display-lg": ["Space Grotesk", "sans-serif"],
+                    "body-base": ["Inter", "sans-serif"],
+                    "headline-md": ["Space Grotesk", "sans-serif"],
+                    "label-uppercase": ["Space Grotesk", "sans-serif"],
+                    "body-sm": ["Inter", "sans-serif"],
+                    "display-2xl": ["Space Grotesk", "sans-serif"]
+            },
+            "fontSize": {
+                    "code-snippet": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                    "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                    "body-base": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-md": ["30px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                    "label-uppercase": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                    "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "display-2xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 198, 207, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 112, 243, 1);
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .scanline {
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.15),
+                rgba(0,0,0,0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+
+        .terminal-inset {
+            background-color: rgba(28, 31, 39, 0.9);
+            border: 1px solid rgba(198, 198, 207, 0.1);
+        }
+
+        .glow-button {
+            border: 1px solid rgba(0, 112, 243, 0.8);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .glow-button:hover {
+            background: rgba(0, 112, 243, 0.1);
+            box-shadow: 0 0 20px rgba(0, 112, 243, 0.4);
+            letter-spacing: 0.15em;
+        }
+
+        .timeline-node {
+            box-shadow: 0 0 10px rgba(0, 112, 243, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-black text-on-surface antialiased min-h-screen flex flex-col font-body-base overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- Top Navigation from Shared Components -->
+<nav class="fixed top-0 left-0 w-full z-[100] bg-black/60 backdrop-blur-lg border-b border-white/10 shadow-[0_0_20px_rgba(0,112,243,0.1)]">
+<div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+<div class="text-xl font-bold text-blue-500 tracking-tighter">
+                DATA_ARCHITECT//01
+            </div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-[10px] md:text-xs text-zinc-500 hover:text-blue-400 hover:tracking-[0.25em] transition-all duration-300 active:scale-95" href="#experience">
+                    01_EXPERIENCE
+                </a>
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-[10px] md:text-xs text-zinc-500 hover:text-blue-400 hover:tracking-[0.25em] transition-all duration-300 active:scale-95" href="#projects">
+                    02_PROJECTS
+                </a>
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-[10px] md:text-xs text-zinc-500 hover:text-blue-400 hover:tracking-[0.25em] transition-all duration-300 active:scale-95" href="#stack">
+                    03_STACK
+                </a>
+<a class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-[10px] md:text-xs text-zinc-500 hover:text-blue-400 hover:tracking-[0.25em] transition-all duration-300 active:scale-95" href="#contact">
+                    04_CONTACT
+                </a>
+</div>
+<div class="flex items-center space-x-unit">
+<button class="text-blue-500 hover:text-blue-400 transition-colors p-2">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</button>
+<button class="text-blue-500 hover:text-blue-400 transition-colors p-2">
+<span class="material-symbols-outlined text-[20px]">database</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-margin-page">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center border-b border-white/5 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Tech Background" class="w-full h-full object-cover opacity-20" data-alt="A macro shot of a dark, high-tech server room interior. Rows of black server racks emit faint, pulsating electric blue lights. The lighting is low-key and moody, creating a sophisticated, analytical atmosphere. The aesthetic matches a pitch-black technical minimalism theme, with geometric precision and subtle glassmorphism reflections on metallic surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwYHJRHUFYQo2W_aCTWHh_9LPiO9gwwWRLzpWY-t95hfq2cmdSpEV5N9sCIoI34n9FSWZ4xw_wio5fF8FLWhkwF4drmADFRw_1Qf6LWKedUYcMlspCYPuO2FtOMbIP3fO1YzBd3hX7DX00SvF4VCLp53JMW7AJPx3YGtjKjtrj1Di-IoswOjp1FP5bTMuIWhD1ZCJ45ouw2YQl8eCiVl96Mm2T15UIvCmAmJYNpZB7ZIjlOSgl2VyLc6tEHXuyRcxfFXemyO_1jtE"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black"></div>
+<div class="absolute inset-0 scanline opacity-5"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="col-span-1 lg:col-span-7 flex flex-col items-start justify-center">
+<div class="mb-stack-xl flex items-center space-x-unit">
+<span class="text-primary-container font-label-uppercase">STATUS: ONLINE</span>
+<div class="w-2 h-2 bg-primary-container rounded-full animate-pulse"></div>
+</div>
+<h1 class="font-display-2xl text-on-surface mb-stack-md relative">
+                    Dron Haritwal
+                    <span class="absolute -top-4 -right-8 text-primary-container opacity-50">
+<span class="material-symbols-outlined text-[32px]">code_blocks</span>
+</span>
+</h1>
+<p class="font-headline-md text-on-surface-variant max-w-3xl mb-stack-xl border-l-2 border-primary-container pl-unit">
+                    Computer Science (Data Science) Undergraduate building scalable software systems and LLM-based applications.
+                </p>
+<div class="flex flex-wrap gap-stack-md">
+<a class="glow-button font-label-uppercase text-primary-container px-8 py-4 flex items-center space-x-2" href="#projects">
+<span>VIEW PROJECTS</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-label-uppercase px-8 py-4 hover:bg-blue-600 transition-colors flex items-center space-x-2 shadow-[0_0_15px_rgba(0,112,243,0.3)] hover:shadow-[0_0_25px_rgba(0,112,243,0.5)]" href="#contact">
+<span>CONTACT ME</span>
+<span class="material-symbols-outlined text-[16px]">mail</span>
+</a>
+<a class="glow-button font-label-uppercase text-on-surface px-8 py-4 flex items-center space-x-2 border-outline-variant hover:border-primary-container" href="#">
+<span>DOWNLOAD RESUME</span>
+<span class="material-symbols-outlined text-[16px]">download</span>
+</a>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-5 hidden lg:flex justify-end relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container to-blue-900 rounded-xl blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative rounded-xl border border-white/10 w-[400px] h-[500px] overflow-hidden glass-panel">
+<img alt="Tech Abstract Profile" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-500 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJDW6VqPGdD_nLgk-kMUfr6-UZDu4iFmMWz-cBRsecAbUKiagRtJKmcBCeCPRj0_hTtR6wztCt4Esd2BpRipDQU5elvIV8giRvJHkaxx_kC-_eVrTtygRN3Eiu227ZIhthzzaKs4srLZLjPK7j4fwFytFFu8KLTmgtNjhLpQyTdHjhsQvXQfBMlYwq9QveAF7n50XfGorubbaEBUlAvmUv9ow4Hw7gV6sppUpw4F9y6a40awN-fhLjE5EJAMy3mB2rntaa9kCnpr0"/>
+<div class="absolute inset-0 scanline opacity-20 mix-blend-overlay"></div>
+<!-- Decorative reticles -->
+<div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-primary-container/70"></div>
+<div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-primary-container/70"></div>
+<div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-primary-container/70"></div>
+<div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-primary-container/70"></div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-stack-xl right-gutter font-code-snippet text-on-surface-variant opacity-50 hidden md:block">
+                SYS.READY // v1.0.42
+            </div>
+</section>
+<!-- Experience Section -->
+<section class="py-24 relative" id="experience">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex items-center space-x-4 mb-16">
+<span class="material-symbols-outlined text-primary-container text-[32px]">hub</span>
+<h2 class="font-display-lg text-on-surface">EXPERIENCE_LOG</h2>
+</div>
+<div class="relative pl-8 md:pl-0">
+<!-- Vertical Timeline Line -->
+<div class="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-px bg-outline opacity-20"></div>
+<!-- Entry 1 -->
+<div class="relative flex flex-col md:flex-row justify-between items-center mb-24 w-full group">
+<!-- Node -->
+<div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-primary-container rounded-sm timeline-node z-10 group-hover:scale-150 transition-transform"></div>
+<!-- Content Left (or full width on mobile) -->
+<div class="w-full md:w-[45%] md:pr-12 md:text-right pl-8 md:pl-0">
+<div class="font-label-uppercase text-primary-container mb-2">PRESENT</div>
+<h3 class="font-headline-md text-on-surface mb-2">AI Research Intern</h3>
+<div class="font-code-snippet text-on-surface-variant">Ontario Tech University</div>
+</div>
+<!-- Content Right (or below on mobile) -->
+<div class="w-full md:w-[45%] pl-8 md:pl-12 mt-4 md:mt-0">
+<div class="glass-panel p-6 rounded-lg">
+<div class="absolute top-2 right-2 text-primary-container/30">
+<span class="material-symbols-outlined">biotech</span>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-4">
+                                    Conducting advanced research in Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) architectures. Developing scalable evaluation frameworks.
+                                </p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-code-snippet text-primary-container bg-primary-container/10 px-2 py-1 border border-primary-container/20">LLMs</span>
+<span class="text-[10px] font-code-snippet text-primary-container bg-primary-container/10 px-2 py-1 border border-primary-container/20">RAG</span>
+<span class="text-[10px] font-code-snippet text-primary-container bg-primary-container/10 px-2 py-1 border border-primary-container/20">Python</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="relative flex flex-col md:flex-row-reverse justify-between items-center mb-24 w-full group">
+<div class="absolute left-[-5px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-outline rounded-sm z-10 group-hover:bg-primary-container group-hover:timeline-node transition-all"></div>
+<div class="w-full md:w-[45%] md:pl-12 pl-8 md:pl-0">
+<div class="font-label-uppercase text-on-surface-variant mb-2">PREVIOUS</div>
+<h3 class="font-headline-md text-on-surface mb-2">Full Stack &amp; AI Intern</h3>
+<div class="font-code-snippet text-on-surface-variant">SRM Institute</div>
+</div>
+<div class="w-full md:w-[45%] pl-8 md:pr-12 md:pl-0 mt-4 md:mt-0">
+<div class="glass-panel p-6 rounded-lg">
+<p class="font-body-sm text-on-surface-variant mb-4">
+                                    Architected scalable software systems integrating machine learning models. Built full-stack dashboards for real-time data visualization and model monitoring.
+                                </p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-code-snippet text-outline bg-surface-variant/50 px-2 py-1 border border-outline/20">React</span>
+<span class="text-[10px] font-code-snippet text-outline bg-surface-variant/50 px-2 py-1 border border-outline/20">Node.js</span>
+<span class="text-[10px] font-code-snippet text-outline bg-surface-variant/50 px-2 py-1 border border-outline/20">TensorFlow</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="py-24 relative border-t border-white/5 bg-surface-container-lowest" id="stack">
+<div class="absolute inset-0 scanline opacity-5"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="flex items-center space-x-4 mb-16">
+<span class="material-symbols-outlined text-primary-container text-[32px]">memory</span>
+<h2 class="font-display-lg text-on-surface">SYS_STACK</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<!-- Python -->
+<div class="glass-panel p-8 rounded-xl flex flex-col items-center justify-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+<div class="absolute inset-0 bg-[#3776AB]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<i class="devicon-python-plain text-6xl text-outline group-hover:text-[#3776AB] transition-colors duration-300 drop-shadow-[0_0_15px_rgba(55,118,171,0)] group-hover:drop-shadow-[0_0_15px_rgba(55,118,171,0.6)] z-10"></i>
+<span class="mt-4 font-code-snippet text-xs text-on-surface-variant tracking-widest uppercase z-10 group-hover:text-white transition-colors">Python</span>
+</div>
+<!-- React -->
+<div class="glass-panel p-8 rounded-xl flex flex-col items-center justify-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+<div class="absolute inset-0 bg-[#61DAFB]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<i class="devicon-react-original text-6xl text-outline group-hover:text-[#61DAFB] transition-colors duration-300 drop-shadow-[0_0_15px_rgba(97,218,251,0)] group-hover:drop-shadow-[0_0_15px_rgba(97,218,251,0.6)] z-10"></i>
+<span class="mt-4 font-code-snippet text-xs text-on-surface-variant tracking-widest uppercase z-10 group-hover:text-white transition-colors">React</span>
+</div>
+<!-- Docker -->
+<div class="glass-panel p-8 rounded-xl flex flex-col items-center justify-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+<div class="absolute inset-0 bg-[#2496ED]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<i class="devicon-docker-plain text-6xl text-outline group-hover:text-[#2496ED] transition-colors duration-300 drop-shadow-[0_0_15px_rgba(36,150,237,0)] group-hover:drop-shadow-[0_0_15px_rgba(36,150,237,0.6)] z-10"></i>
+<span class="mt-4 font-code-snippet text-xs text-on-surface-variant tracking-widest uppercase z-10 group-hover:text-white transition-colors">Docker</span>
+</div>
+<!-- AWS -->
+<div class="glass-panel p-8 rounded-xl flex flex-col items-center justify-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+<div class="absolute inset-0 bg-[#FF9900]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<i class="devicon-amazonwebservices-plain-wordmark text-6xl text-outline group-hover:text-[#FF9900] transition-colors duration-300 drop-shadow-[0_0_15px_rgba(255,153,0,0)] group-hover:drop-shadow-[0_0_15px_rgba(255,153,0,0.6)] z-10"></i>
+<span class="mt-4 font-code-snippet text-xs text-on-surface-variant tracking-widest uppercase z-10 group-hover:text-white transition-colors">AWS</span>
+</div>
+<!-- TensorFlow -->
+<div class="glass-panel p-8 rounded-xl flex flex-col items-center justify-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+<div class="absolute inset-0 bg-[#FF6F00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<i class="devicon-tensorflow-original text-6xl text-outline group-hover:text-[#FF6F00] transition-colors duration-300 drop-shadow-[0_0_15px_rgba(255,111,0,0)] group-hover:drop-shadow-[0_0_15px_rgba(255,111,0,0.6)] z-10"></i>
+<span class="mt-4 font-code-snippet text-xs text-on-surface-variant tracking-widest uppercase z-10 group-hover:text-white transition-colors">TensorFlow</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Bento Grid -->
+<section class="py-24 bg-surface-container-lowest border-t border-white/5 relative" id="projects">
+<div class="absolute inset-0 scanline opacity-5"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="flex justify-between items-end mb-16">
+<div>
+<div class="font-label-uppercase text-primary-container mb-2 tracking-widest">PORTFOLIO</div>
+<h2 class="font-display-lg text-on-surface">DATA_MODELS</h2>
+</div>
+<div class="font-code-snippet text-on-surface-variant opacity-50 hidden md:block">
+                        EXECUTE: ./view_all.sh
+                    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Project Card 1 -->
+<div class="glass-panel col-span-1 md:col-span-8 rounded-xl p-8 group min-h-[400px] flex flex-col justify-between relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div class="p-3 bg-surface-variant/50 rounded-lg border border-outline/20 group-hover:border-primary-container/50 transition-colors shadow-[0_0_0_rgba(0,112,243,0)] group-hover:shadow-[0_0_15px_rgba(0,112,243,0.3)]">
+<span class="material-symbols-outlined text-primary-container">psychology</span>
+</div>
+<div class="flex space-x-2">
+<span class="text-[10px] font-code-snippet text-primary-container bg-primary-container/10 px-2 py-1 border border-primary-container/20">NLP</span>
+<span class="text-[10px] font-code-snippet text-primary-container bg-primary-container/10 px-2 py-1 border border-primary-container/20">Random Forest</span>
+</div>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-on-surface mb-4 group-hover:text-primary-container transition-colors">SRM Career Catalyst</h3>
+<p class="font-body-base text-on-surface-variant max-w-2xl mb-8">
+                                An advanced career recommendation engine utilizing Natural Language Processing and Random Forest algorithms to analyze student profiles and suggest optimal career trajectories based on market data.
+                            </p>
+<div class="flex flex-wrap gap-4">
+<a class="glow-button font-label-uppercase text-primary-container px-5 py-3 flex items-center space-x-2 text-xs bg-primary-container/10" href="#">
+<span>READ CASE STUDY</span>
+<span class="material-symbols-outlined text-[14px]">article</span>
+</a>
+<a class="glow-button font-label-uppercase text-on-surface px-5 py-3 flex items-center space-x-2 text-xs border-outline-variant hover:border-primary-container" href="#">
+<span>SOURCE CODE</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</a>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none transform translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-[250px]">account_tree</span>
+</div>
+</div>
+<!-- Small Project Card 2 -->
+<div class="glass-panel col-span-1 md:col-span-4 rounded-xl p-8 group min-h-[400px] flex flex-col justify-between relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-bl from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div class="p-3 bg-surface-variant/50 rounded-lg border border-outline/20 group-hover:border-primary-container/50 transition-colors shadow-[0_0_0_rgba(0,112,243,0)] group-hover:shadow-[0_0_15px_rgba(0,112,243,0.3)]">
+<span class="material-symbols-outlined text-primary-container">smart_toy</span>
+</div>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-on-surface mb-4 text-[24px] group-hover:text-primary-container transition-colors">RAG YouTube Chatbot</h3>
+<p class="font-body-sm text-on-surface-variant mb-6">
+                                A conversational AI built with LangChain that retrieves context from YouTube video transcripts to answer user queries with high accuracy.
+                            </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[10px] font-code-snippet text-outline bg-surface-variant/50 px-2 py-1 border border-outline/20">LangChain</span>
+<span class="text-[10px] font-code-snippet text-outline bg-surface-variant/50 px-2 py-1 border border-outline/20">Vector DB</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<a class="glow-button font-label-uppercase text-on-surface px-4 py-2 flex items-center space-x-2 text-xs border-outline-variant hover:border-primary-container w-full justify-center" href="#">
+<span>SOURCE CODE</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Terminal Inset -->
+<div class="terminal-inset col-span-1 md:col-span-12 rounded-xl p-8 font-code-snippet relative overflow-hidden">
+<div class="absolute top-4 right-4 flex items-center space-x-2">
+<div class="w-2 h-2 bg-primary-container rounded-full animate-pulse"></div>
+<span class="text-[10px] text-primary-container">LIVE_TERMINAL</span>
+</div>
+<div class="text-primary-container mb-2">$ cat current_focus.txt</div>
+<div class="text-on-surface-variant pl-4 mb-4">
+                            &gt; Exploring agentic workflows in LLMs.<br/>
+                            &gt; Optimizing vector retrieval latency.<br/>
+                            &gt; Building scalable microservices with Docker.
+                        </div>
+<div class="text-primary-container flex items-center">
+                            $ <span class="w-2 h-4 bg-primary-container ml-2 animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Certifications Section -->
+<section class="py-24 relative border-t border-white/5 bg-surface-container-lowest" id="certifications">
+<div class="absolute inset-0 scanline opacity-5"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="flex items-center space-x-4 mb-16">
+<span class="material-symbols-outlined text-primary-container text-[32px]">workspace_premium</span>
+<h2 class="font-display-lg text-on-surface">SYS_CERTS</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Certification 1 -->
+<div class="glass-panel p-8 rounded-xl flex items-center space-x-6 group relative overflow-hidden transition-all duration-300 hover:border-primary-container">
+<div class="absolute inset-0 bg-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<div class="p-4 bg-surface-variant/50 rounded-lg border border-outline/20 group-hover:border-primary-container/50 transition-colors shadow-[0_0_0_rgba(0,112,243,0)] group-hover:shadow-[0_0_15px_rgba(0,112,243,0.3)] relative z-10">
+<span class="material-symbols-outlined text-primary-container text-[32px]">verified</span>
+</div>
+<div class="relative z-10 flex-grow">
+<div class="font-code-snippet text-primary-container text-xs tracking-widest uppercase mb-1">Oracle</div>
+<h3 class="font-headline-md text-on-surface text-[20px] group-hover:text-primary-container transition-colors">Generative AI Professional</h3>
+</div>
+</div>
+<!-- Certification 2 -->
+<div class="glass-panel p-8 rounded-xl flex items-center space-x-6 group relative overflow-hidden transition-all duration-300 hover:border-primary-container">
+<div class="absolute inset-0 bg-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+<div class="p-4 bg-surface-variant/50 rounded-lg border border-outline/20 group-hover:border-primary-container/50 transition-colors shadow-[0_0_0_rgba(0,112,243,0)] group-hover:shadow-[0_0_15px_rgba(0,112,243,0.3)] relative z-10">
+<span class="material-symbols-outlined text-primary-container text-[32px]">analytics</span>
+</div>
+<div class="relative z-10 flex-grow">
+<div class="font-code-snippet text-primary-container text-xs tracking-widest uppercase mb-1">Oracle</div>
+<h3 class="font-headline-md text-on-surface text-[20px] group-hover:text-primary-container transition-colors">Data Science Professional</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer from Shared Components -->
+<footer class="bg-black w-full py-16 border-t border-white/5 flex flex-col items-center justify-center space-y-8 px-4 relative" id="contact">
+<div class="absolute inset-0 scanline opacity-5"></div>
+<div class="text-blue-500 font-black text-2xl tracking-tighter z-10">
+            DATA_ARCHITECT//01
+        </div>
+<div class="flex space-x-8 z-10">
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-zinc-600 hover:text-white transition-colors duration-500 cursor-crosshair" href="#">
+                GITHUB
+            </a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-zinc-600 hover:text-white transition-colors duration-500 cursor-crosshair" href="#">
+                LINKEDIN
+            </a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-zinc-600 hover:text-white transition-colors duration-500 cursor-crosshair" href="#">
+                SOURCE_CODE
+            </a>
+</div>
+<div class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-zinc-600 z-10">
+            © 2024 SYSTEM_RECAP // ALL RIGHTS RESERVED
+        </div>
+<!-- Crosshair accents -->
+<div class="absolute top-4 left-4 text-zinc-800 pointer-events-none">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</div>
+<div class="absolute top-4 right-4 text-zinc-800 pointer-events-none">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</div>
+</footer>
+</body></html>
