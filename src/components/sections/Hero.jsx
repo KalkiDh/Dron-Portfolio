@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail, Download, CodeXml } from 'lucide-react'
+import DataFluxNodeGraph from '../ui/DataFluxNodeGraph'
 
 // Background image from Stitch design
 const BG_IMG =
@@ -20,7 +21,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center border-b border-white/5 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center border-b border-white/5 overflow-hidden pt-20 lg:pt-0 lg:min-h-[100dvh]">
 
       {/* ── Background layer ─────────────────────── */}
       <div className="absolute inset-0 z-0">
@@ -38,11 +39,11 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
 
       {/* ── Content grid ─────────────────────────── */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-24 pb-16">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center flex-grow pt-4 lg:pt-24 lg:pb-16">
 
         {/* Left column */}
         <motion.div
-          className="col-span-1 lg:col-span-7 flex flex-col items-start"
+          className="col-span-1 lg:col-span-7 flex flex-col items-start justify-center min-h-[calc(100dvh-80px)] lg:min-h-0 pb-12 lg:pb-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -102,41 +103,19 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right column — profile card */}
+        {/* Right column — Node Graph */}
         <motion.div
-          className="col-span-1 lg:col-span-5 hidden lg:flex justify-end relative group"
+          className="col-span-1 lg:col-span-5 w-full relative"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Glow halo */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-900 rounded-xl blur-2xl opacity-15 group-hover:opacity-30 transition duration-1000" />
-
-          {/* Card */}
-          <div className="relative rounded-xl border border-white/10 w-[380px] h-[480px] overflow-hidden glass-panel">
-            <img
-              src={PROFILE_IMG}
-              alt="Tech Abstract Profile"
-              className="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-500 scale-105 group-hover:scale-100"
-            />
-            <div className="absolute inset-0 scanline opacity-15 mix-blend-overlay pointer-events-none" />
-
-            {/* Reticle corners */}
-            <div className="reticle-tl" />
-            <div className="reticle-tr" />
-            <div className="reticle-bl" />
-            <div className="reticle-br" />
-
-            {/* Coordinate badge */}
-            <div className="absolute bottom-4 left-4 font-grotesk text-[9px] tracking-widest uppercase text-blue-400/50">
-              ONTARIO TECH UNIV // REMOTE
-            </div>
-          </div>
+          <DataFluxNodeGraph />
         </motion.div>
       </div>
 
       {/* Sys-ready watermark */}
-      <div className="absolute bottom-8 right-8 font-grotesk text-xs text-zinc-700 tracking-widest hidden md:block">
+      <div className="absolute bottom-8 right-8 font-grotesk text-xs text-zinc-400 tracking-widest hidden md:block">
         SYS.READY // v1.0.42
       </div>
     </section>

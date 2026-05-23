@@ -32,10 +32,23 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="py-28 relative border-t border-white/5 bg-[#0b0e15]"
+      className="py-28 relative border-t border-white/5 bg-night-1"
     >
       {/* Scanline */}
       <div className="absolute inset-0 scanline opacity-5 pointer-events-none" />
+
+      <style>{`
+        @keyframes marquee-scroll {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee-scroll 25s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
       <div className="max-w-[1280px] mx-auto px-6 relative z-10">
 
@@ -78,46 +91,41 @@ export default function TechStack() {
           ))}
         </motion.div>
 
-        {/* Icon grid */}
-        <motion.div
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-5"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          {stack.map((tech) => (
-            <motion.div
-              key={tech.label}
-              variants={item}
-              className="glass-panel p-6 rounded-xl flex flex-col items-center justify-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden cursor-default"
-            >
-              {/* Hover color wash */}
+        {/* Icon Marquee */}
+        <div className="relative overflow-hidden w-full py-10 flex">
+          {/* Left and Right fades for modern effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-night-1 to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-night-1 to-transparent z-20 pointer-events-none" />
+          
+          <div className="flex gap-6 w-max animate-marquee">
+            {[...stack, ...stack, ...stack, ...stack].map((tech, index) => (
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{ background: `${tech.color}08` }}
-              />
+                key={`${tech.label}-${index}`}
+                className="glass-panel p-6 rounded-xl flex flex-col items-center justify-center w-[120px] h-[120px] group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden cursor-default flex-shrink-0"
+              >
+                {/* Active color wash (previously hover) */}
+                <div
+                  className="absolute inset-0 opacity-100 pointer-events-none"
+                  style={{ background: `${tech.color}15` }} /* Slightly stronger wash */
+                />
 
-              {/* Icon */}
-              <i
-                className={`${tech.icon} text-[44px] text-zinc-600 transition-all duration-300 z-10`}
-                onMouseEnter={e => {
-                  e.currentTarget.style.color  = tech.color
-                  e.currentTarget.style.filter = `drop-shadow(0 0 10px ${tech.glow})`
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.color  = ''
-                  e.currentTarget.style.filter = ''
-                }}
-              />
+                {/* Icon with permanent active effects */}
+                <i
+                  className={`${tech.icon} text-[44px] transition-all duration-300 z-10`}
+                  style={{ 
+                    color: tech.color, 
+                    filter: `drop-shadow(0 0 10px ${tech.glow})` 
+                  }}
+                />
 
-              {/* Label */}
-              <span className="mt-3 font-grotesk text-[9px] text-zinc-600 tracking-widest uppercase z-10 group-hover:text-white transition-colors duration-300">
-                {tech.label}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Label (permanently white) */}
+                <span className="mt-3 font-grotesk text-[9px] text-white tracking-widest uppercase z-10">
+                  {tech.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

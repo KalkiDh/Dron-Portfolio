@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 
 const certs = [
   {
+    issuer: 'AWS  ·  2025',
+    title: 'AWS Certified Solutions Architect - Associate',
+    matIcon: 'cloud_done',
+    link: 'https://drive.google.com/file/d/1VCKlnYA9aOX1b4mKQzCzK7uhUW6Mgl6r/view?usp=sharing',
+  },
+  {
     issuer: 'Oracle  ·  2025',
     title: 'Generative AI Professional',
     matIcon: 'verified',
@@ -255,10 +261,10 @@ export default function Certifications() {
             </div>
 
             <div className="flex flex-col items-start md:items-end">
-              <div className="font-grotesk text-[10px] tracking-widest uppercase text-zinc-600 mb-1">CGPA</div>
+              <div className="font-grotesk text-[10px] tracking-widest uppercase text-zinc-400 mb-1">CGPA</div>
               <div className="font-grotesk font-bold text-[42px] text-blue-400 leading-none">
                 9.07
-                <span className="text-[18px] text-zinc-600 font-normal"> / 10</span>
+                <span className="text-[18px] text-zinc-400 font-normal"> / 10</span>
               </div>
             </div>
           </div>

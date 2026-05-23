@@ -23,10 +23,10 @@ export default function Footer() {
       <div className="absolute inset-0 scanline opacity-5 pointer-events-none" />
 
       {/* Corner crosshairs */}
-      <div className="absolute top-4 left-4 text-zinc-800 pointer-events-none"><Plus size={16} /></div>
-      <div className="absolute top-4 right-4 text-zinc-800 pointer-events-none"><Plus size={16} /></div>
-      <div className="absolute bottom-4 left-4 text-zinc-800 pointer-events-none"><Plus size={16} /></div>
-      <div className="absolute bottom-4 right-4 text-zinc-800 pointer-events-none"><Plus size={16} /></div>
+      <div className="absolute top-4 left-4 text-zinc-500 pointer-events-none"><Plus size={16} /></div>
+      <div className="absolute top-4 right-4 text-zinc-500 pointer-events-none"><Plus size={16} /></div>
+      <div className="absolute bottom-4 left-4 text-zinc-500 pointer-events-none"><Plus size={16} /></div>
+      <div className="absolute bottom-4 right-4 text-zinc-500 pointer-events-none"><Plus size={16} /></div>
 
       {/* Contact section */}
       <div className="max-w-[1280px] mx-auto px-6 py-20">
@@ -117,7 +117,7 @@ export default function Footer() {
             className="flex items-center space-x-2"
           >
             <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="font-grotesk text-[10px] tracking-widest uppercase text-zinc-600">
+            <span className="font-grotesk text-[10px] tracking-widest uppercase text-zinc-400">
               ALL SYSTEMS OPERATIONAL
             </span>
           </motion.div>
@@ -136,9 +136,9 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center space-x-2 font-grotesk text-[10px] tracking-widest uppercase text-zinc-600 hover:text-white transition-colors duration-500 cursor-crosshair"
+                className="group flex items-center space-x-2 font-grotesk text-[10px] tracking-widest uppercase text-zinc-400 hover:text-white transition-colors duration-500 cursor-crosshair"
               >
-                <Icon size={12} className="text-zinc-700 group-hover:text-blue-400 transition-colors" />
+                <Icon size={12} className="text-zinc-400 group-hover:text-blue-400 transition-colors" />
                 <span>{label}</span>
               </a>
             ))}
@@ -146,7 +146,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="text-center mt-8 font-grotesk text-[10px] tracking-widest uppercase text-zinc-800">
+        <div className="text-center mt-8 font-grotesk text-[10px] tracking-widest uppercase text-zinc-400">
           © {new Date().getFullYear()} DRON HARITWAL // CHENNAI, TAMIL NADU // ALL RIGHTS RESERVED
         </div>
       </div>

@@ -241,7 +241,7 @@ export default function ProjectBento() {
   return (
     <section
       id="projects"
-      className="py-28 bg-[#0b0e15] border-t border-white/5 relative"
+      className="py-28 bg-night-1 border-t border-white/5 relative"
     >
       <div className="absolute inset-0 scanline opacity-5 pointer-events-none" />
 
@@ -263,7 +263,7 @@ export default function ProjectBento() {
               DATA_MODELS
             </h2>
           </div>
-          <div className="font-grotesk text-xs text-zinc-700 tracking-wider hidden md:block">
+          <div className="font-grotesk text-xs text-zinc-400 tracking-wider hidden md:block">
             EXECUTE: ./view_all.sh
           </div>
         </motion.div>

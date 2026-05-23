@@ -8,7 +8,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-container": "#0070f3",
+        "night-1": "#000022",
+        "night-2": "#001242",
+        "night-3": "#0094C6",
+        "night-4": "#005E7C",
+        "night-5": "#040F16",
+        "blue": {
+          400: "#0094C6",
+          500: "#0094C6",
+          600: "#005E7C",
+          900: "#001242",
+        },
+        "black": "#040F16",
+        "primary-container": "#0094C6",
         "on-secondary": "#2f3037",
         "primary-fixed": "#d8e2ff",
         "on-error-container": "#ffdad6",
@@ -96,8 +108,8 @@ export default {
       },
       keyframes: {
         'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 5px rgba(0,112,243,0.3)' },
-          '50%': { boxShadow: '0 0 20px rgba(0,112,243,0.7)' },
+          '0%, 100%': { boxShadow: '0 0 5px rgba(0,148,198,0.3)' },
+          '50%': { boxShadow: '0 0 20px rgba(0,148,198,0.7)' },
         },
         'scanline-scroll': {
           '0%': { backgroundPosition: '0 0' },

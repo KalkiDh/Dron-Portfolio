@@ -2,12 +2,25 @@ import { motion } from 'framer-motion'
 
 const experiences = [
   {
+    period: 'JUN 2026 – AUG 2026',
+    role: 'Visiting Research Intern',
+    company: 'University of Windsor',
+    location: 'Windsor, Ontario, Canada',
+    description:
+      'Will architect digital health assistant frameworks targeting wellness and social isolation support for aging populations under the Mitacs Globalink research initiative. Will engineer specialized interaction models to translate clinical geriatric care protocols into scalable software implementations.',
+    tags: ['Digital Health', 'Research', 'System Architecture'],
+    icon: 'health_and_safety',
+    link: 'https://drive.google.com/file/d/1LHPqsjzNfdGQ1EpdGdU_YkN4fyt_OE5M/view?usp=sharing',
+    active: false,
+    side: 'right',
+  },
+  {
     period: 'DEC 2025 – PRESENT',
-    role: 'AI Research Intern',
+    role: 'AI Product Intern',
     company: 'Ontario Tech University',
     location: 'Ontario, Canada (Remote)',
     description:
-      'Building a scalable answer evaluation pipeline converting complex PDFs into structured data for LLM and RAG systems. Developed a fault-tolerant parsing engine using Python and multithreading to process complex data and improve debugging efficiency.',
+      'Architecting an AI-driven document evaluation platform. Designing scalable data pipelines to transition unstructured file formats into structured contexts for Large Language Models.',
     tags: ['LLMs', 'RAG', 'Python', 'Multithreading'],
     icon: 'biotech',
     active: true,
@@ -108,7 +121,7 @@ export default function ExperienceTimeline() {
                 <div className="font-grotesk text-sm text-zinc-500 tracking-wider">
                   {exp.company}
                 </div>
-                <div className="font-grotesk text-[10px] text-zinc-700 tracking-wider mt-1">
+                <div className="font-grotesk text-[10px] text-zinc-400 tracking-wider mt-1">
                   {exp.location}
                 </div>
               </div>

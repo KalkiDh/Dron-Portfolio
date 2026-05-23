@@ -6,7 +6,8 @@ const navLinks = [
   { label: '01_EXPERIENCE', href: '#experience' },
   { label: '02_PROJECTS',   href: '#projects'   },
   { label: '03_STACK',      href: '#stack'      },
-  { label: '04_CONTACT',    href: '#contact'    },
+  { label: '04_CERTS',      href: '#certifications' },
+  { label: '05_CONTACT',    href: '#contact'    },
 ]
 
 export default function Navbar() {
@@ -50,8 +51,15 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i, duration: 0.4 }}
-              onClick={() => setActive(link.href)}
-              className={`font-grotesk uppercase tracking-[0.2em] text-[10px] transition-all duration-300 active:scale-95 ${
+              onClick={(e) => {
+                e.preventDefault();
+                setActive(link.href);
+                const target = document.querySelector(link.href);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className={`font-grotesk uppercase tracking-[0.2em] text-[10px] transition-all duration-300 active:scale-95 cursor-pointer ${
                 active === link.href
                   ? 'text-blue-400'
                   : 'text-zinc-500 hover:text-blue-400 hover:tracking-[0.25em]'
@@ -106,8 +114,17 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="block font-grotesk uppercase tracking-[0.2em] text-[11px] text-zinc-400 hover:text-blue-400 py-3 border-b border-white/5 transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  setTimeout(() => {
+                    const target = document.querySelector(link.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }}
+                className="block font-grotesk uppercase tracking-[0.2em] text-[11px] text-zinc-400 hover:text-blue-400 py-3 border-b border-white/5 transition-colors cursor-pointer"
               >
                 {link.label}
               </a>
