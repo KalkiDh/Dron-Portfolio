@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Phone, Plus } from 'lucide-react'
 
 const links = [
-  { label: 'GITHUB',   href: 'https://github.com/dronharitwal',              Icon: Github   },
+  { label: 'GITHUB',   href: 'https://github.com/KalkiDh',              Icon: Github   },
   { label: 'LINKEDIN', href: 'https://linkedin.com/in/dronharitwal',         Icon: Linkedin },
   { label: 'EMAIL',    href: 'mailto:dronharitwal123@gmail.com',             Icon: Mail     },
 ]
@@ -70,7 +70,7 @@ export default function Footer() {
             {/* GitHub + LinkedIn CTA buttons */}
             <div className="flex gap-3 pt-2">
               <a
-                href="https://github.com/dronharitwal"
+                href="https://github.com/KalkiDh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center space-x-2 px-5 py-4 rounded-lg font-grotesk text-[11px] tracking-[0.15em] uppercase bg-zinc-900 border border-zinc-700/60 text-zinc-300 hover:border-blue-500 hover:text-white hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(0,112,243,0.25)] transition-all duration-300 group"
