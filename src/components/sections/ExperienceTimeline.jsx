@@ -7,7 +7,7 @@ const experiences = [
     company: 'University of Windsor',
     location: 'Windsor, Ontario, Canada',
     description:
-      'Will architect digital health assistant frameworks targeting wellness and social isolation support for aging populations under the Mitacs Globalink research initiative. Will engineer specialized interaction models to translate clinical geriatric care protocols into scalable software implementations.',
+      'As part of the Mitacs Globalink research initiative, I will design digital health assistants aimed at promoting wellness and combating social isolation in aging populations. A key focus will be engineering specialized interaction models that convert clinical geriatric care protocols into scalable software.',
     tags: ['Digital Health', 'Research', 'System Architecture'],
     icon: 'health_and_safety',
     link: 'https://drive.google.com/file/d/1LHPqsjzNfdGQ1EpdGdU_YkN4fyt_OE5M/view?usp=sharing',
